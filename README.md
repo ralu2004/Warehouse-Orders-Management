@@ -109,7 +109,7 @@ A lightweight ORM layer using Java Reflection + annotations:
 git clone https://github.com/your-username/warehouse-orders-management.git
 ```
 
-**Configure PostgreSQL**
+# Configure PostgreSQL
 
 **Create the database:**
 
@@ -117,7 +117,7 @@ git clone https://github.com/your-username/warehouse-orders-management.git
 CREATE DATABASE ordersdb;
 ```
 
-** Define connection parameters:**
+**Define connection parameters:**
 
 ```java
 String url = "jdbc:postgresql://localhost:5432/ordersdb";
