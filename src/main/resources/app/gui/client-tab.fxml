@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="app.gui.controllers.ClientController">
+    <SplitPane dividerPositions="0.5" orientation="VERTICAL" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+               AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <HBox spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10"/>
+            </padding>
+            <TitledPane text="New client">
+                <VBox prefHeight="150.0" prefWidth="261.0" spacing="10">
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10"/>
+                    </padding>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="First Name:"/>
+                        <TextField fx:id="newFirstNameField" promptText="Enter First Name" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Last Name:"/>
+                        <TextField fx:id="newLastNameField" promptText="Enter Last Name" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Email:"/>
+                        <TextField fx:id="newEmailField" promptText="someone@example.com" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Address:"/>
+                        <TextField fx:id="newAddressField" promptText="Enter an Address" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <Button onAction="#handleAddClient" text="Add"/>
+                </VBox>
+            </TitledPane>
+            <TitledPane text="Edit client data">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10"/>
+                    </padding>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Please select a client in the table, then modify the desired fields."/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="ID:"/>
+                        <TextField fx:id="editIdField" editable="false" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="First Name:"/>
+                        <TextField fx:id="editFirstNameField" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Last Name:"/>
+                        <TextField fx:id="editLastNameField" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Email:"/>
+                        <TextField fx:id="editEmailField" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Address:"/>
+                        <TextField fx:id="editAddressField" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <Button onAction="#handleUpdateClient" text="Update"/>
+                </VBox>
+            </TitledPane>
+            <TitledPane text="Delete client">
+                <VBox alignment="CENTER">
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="ID:"/>
+                        <TextField fx:id="deleteIdField" promptText="Enter client ID" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <Button onAction="#handleDeleteClient" text="Delete"/>
+                </VBox>
+            </TitledPane>
+
+            <Button alignment="TOP_LEFT" onAction="#handleRefresh" text="Refresh"/>
+
+        </HBox>
+        <VBox VBox.vgrow="ALWAYS">
+            <TitledPane text="Clients">
+                <TableView fx:id="clientTable" onMouseClicked="#handleTableClick">
+                </TableView>
+            </TitledPane>
+        </VBox>
+    </SplitPane>
+</AnchorPane>

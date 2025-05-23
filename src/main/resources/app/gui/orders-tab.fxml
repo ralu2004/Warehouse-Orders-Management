@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.gui.controllers.OrdersController">
+    <SplitPane dividerPositions="0.5" orientation="VERTICAL"
+               AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+               AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10"/>
+            </padding>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Select Client:"/>
+                <ComboBox fx:id="clientComboBox" prefWidth="200"/>
+                <Label text="Select Product:"/>
+                <ComboBox fx:id="productComboBox" prefWidth="200"/>
+                <Label text="Quantity:"/>
+                <TextField fx:id="quantityField" promptText="Enter quantity" prefWidth="100"/>
+                <Button text="Generate Order" onAction="#handleGenerateOrder"/>
+            </HBox>
+
+            <TitledPane text="Delete Order">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Order ID:"/>
+                    <TextField fx:id="deleteOrderField" promptText="Enter order ID" prefWidth="150"/>
+                    <Button text="Delete Order" onAction="#handleDeleteOrder"/>
+                </HBox>
+            </TitledPane>
+
+            <Button alignment="TOP_LEFT" onAction="#handleRefresh" text="Refresh"/>
+        </VBox>
+
+        <VBox VBox.vgrow="ALWAYS">
+            <TitledPane text="Orders            - click on an order to view the bill">
+                <TableView fx:id="detailedOrdersTable" onMouseClicked="#handleTableClick">
+                </TableView>
+            </TitledPane>
+        </VBox>
+    </SplitPane>
+</AnchorPane>

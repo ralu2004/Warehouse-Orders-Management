@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="app.gui.controllers.ProductController">
+    <SplitPane dividerPositions="0.5" orientation="VERTICAL" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+               AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <HBox spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10"/>
+            </padding>
+            <TitledPane text="New Product">
+                <VBox prefHeight="165.0" prefWidth="261.0" spacing="10">
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10"/>
+                    </padding>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Name:"/>
+                        <TextField fx:id="newNameField" promptText="Enter product name" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Price:"/>
+                        <TextField fx:id="newPriceField" promptText="Enter price" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Stock:"/>
+                        <TextField fx:id="newStockField" promptText="Enter stock value" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <Button onAction="#handleAddProduct" text="Add"/>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane text="Edit Product">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets bottom="10" left="10" right="10" top="10"/>
+                    </padding>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Please select a product in the table, then modify the desired fields."/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="ID:"/>
+                        <TextField fx:id="editIdField" editable="false" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Name:"/>
+                        <TextField fx:id="editNameField" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Price:"/>
+                        <TextField fx:id="editPriceField" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="Stock:"/>
+                        <TextField fx:id="editStockField" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <Button onAction="#handleUpdateProduct" text="Update"/>
+                </VBox>
+            </TitledPane>
+
+            <TitledPane text="Delete Product">
+                <VBox alignment="CENTER">
+                    <HBox spacing="10">
+                        <Label minWidth="80.0" text="ID:"/>
+                        <TextField fx:id="deleteIdField" promptText="Enter product ID" HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <Button onAction="#handleDeleteProduct" text="Delete"/>
+                </VBox>
+            </TitledPane>
+
+            <Button alignment="TOP_LEFT" onAction="#handleRefresh" text="Refresh"/>
+
+        </HBox>
+        <VBox VBox.vgrow="ALWAYS">
+            <TitledPane text="Products">
+                <TableView fx:id="productTable" onMouseClicked="#handleTableClick">
+                </TableView>
+            </TitledPane>
+        </VBox>
+    </SplitPane>
+</AnchorPane>
