@@ -1,138 +1,128 @@
-#🏷️ Warehouse Orders Management System
+# 🏷️ Warehouse Orders Management System
+
 A full-featured Java application for managing client orders in a warehouse, built using JavaFX, PostgreSQL, Java Reflection, and Maven. This project demonstrates advanced use of OOP, layered architecture, custom ORM, and modern functional programming techniques.
 
-##🎯 Features
-Client Management: Add, edit, delete, and view clients
+---
 
-Product Management: Add, edit, delete, and view products
+## 🎯 Features
 
-Order Processing:
+- **Client Management**: Add, edit, delete, and view clients  
+- **Product Management**: Add, edit, delete, and view products  
+- **Order Processing**:
+  - Create orders by selecting clients and products
+  - Validate stock before processing
+  - Automatically decrement stock on successful order  
+- **Immutable Bills**:
+  - Auto-generated bill (record) for each order
+  - Stored in a Log table (immutable via database triggers)
+- **Dynamic Table Generation**: GUI tables auto-generate headers and content using reflection
+- **Generic Data Access Layer**: ORM-style operations using reflection + custom annotations
+- **Validation & Error Handling**: Business logic validators and custom exceptions
 
-Create orders by selecting clients and products
+---
 
-Validate stock before processing
+## 🧠 Architecture & Design
 
-Automatically decrement stock on successful order
+The application follows a clean **Layered Architecture**:
 
-Immutable Bills:
+- `model` — data models (POJOs & record classes)  
+- `businessLayer` — core business logic and validation  
+- `dataAccessLayer` — generic DAO with reflection-based ORM  
+- `presentation` — JavaFX GUI: controllers, views, user interaction  
 
-Auto-generated bill (record) for each order
+GUI uses a partial MVC pattern:
 
-Stored in a Log table (immutable via database triggers)
+- **Model** — domain objects  
+- **View** — FXML UI  
+- **Controller** — UI logic and event handling  
 
-Dynamic Table Generation: GUI tables auto-generate headers and content using reflection
+---
 
-Generic Data Access Layer: ORM-style database operations using Java reflection and custom annotations
+## 🔧 Technologies Used
 
-Validation & Error Handling: Business logic validators and custom exceptions for meaningful feedback
+- Java 17+  
+- JavaFX  
+- PostgreSQL  
+- Maven  
+- JDBC  
+- Java Reflection  
+- Java Records  
 
-##🧠 Architecture & Design
-The application follows a clean Layered Architecture:
+---
 
-model — data models (POJOs & record classes)
+## 🧱 OOP Principles
 
-businessLayer — core business logic and validation
+- **Encapsulation**: Separation of concerns across layers  
+- **Abstraction**: Interfaces and clean public APIs  
+- **Inheritance**: Reusable base components  
+- **Polymorphism**: Method overloading and dynamic behavior  
 
-dataAccessLayer — generic DAO with reflection-based ORM
+---
 
-presentation — JavaFX GUI: controllers, views, user interaction
+## 📐 Design Patterns
 
-GUI follows a partial MVC pattern:
+- **Singleton** — database connection management  
+- **DAO** (Data Access Object) — abstract DB access via generic DAO  
+- **MVC** — for GUI structure  
+- **Template Method** — for reusable logic in the DAO  
 
-Model (domain objects)
+---
 
-View (FXML UI)
+## 🧬 Functional Programming
 
-Controller (UI logic and event handling)
+Modern Java features include:
 
-##🔧 Technologies Used
-Java 17+
+- Lambda expressions for concise logic  
+- Streams API for collection processing  
+- Immutability via `record` types  
+- Method references and fluent style  
 
-JavaFX
+---
 
-PostgreSQL
+## 🧪 Reflection-Based ORM
 
-Maven
+A lightweight ORM layer using Java Reflection + annotations:
 
-JDBC
+- `@Table` and `@Column` map to the DB schema  
+- Generic DAO generates SQL dynamically at runtime  
+- CRUD operations across all entities  
 
-Java Reflection
+---
 
-Java Records
+## 🖥️ GUI Overview
 
-##🧱 OOP Principles
-Encapsulation: Separation of concerns across layers
+- JavaFX multi-window application  
+- Tables are generated dynamically using reflection  
+- Interfaces for:
+  - Clients
+  - Products
+  - Orders  
+- Real-time error messages for invalid input or stock issues  
 
-Abstraction: Interfaces and clean public APIs
+---
 
-Inheritance: Reusable base components
+## 🛠️ Setup Instructions
 
-Polymorphism: Method overloading and dynamic behavior
+**Clone the repository:**
 
-##📐 Design Patterns
-Singleton — database connection management
+```bash
+git clone https://github.com/your-username/warehouse-orders-management.git
 
-DAO (Data Access Object) — abstract DB access via a generic DAO class
+### 2. Configure PostgreSQL
 
-MVC (Model-View-Controller) — partial application for GUI structure
+**Create the database:**
 
-Template Method — reused logic in reflection-based DAO
+```sql
+CREATE DATABASE ordersdb;
+```java
+String url = "jdbc:postgresql://localhost:5432/ordersdb";
+String user = "your_username";
+String password = "your_password";
 
-##🧬 Functional Programming
-Modern Java features are used extensively:
-
-Lambda expressions for concise callbacks and logic
-
-Streams API for processing and transforming collections
-
-Immutability through Java record types (e.g., Bill)
-
-Method references and fluent programming style
-
-##🧪 Reflection-Based ORM
-A lightweight custom ORM layer using Java Reflection and annotations.
-
-@Table and @Column define mapping to database schema
-
-Generic DAO generates SQL dynamically at runtime
-
-Supports CRUD operations across all entity types
-
-##🖥️ GUI Overview
-JavaFX multi-window application
-
-Tables are generated dynamically based on object structure
-
-Interfaces for:
-
-Clients
-
-Products
-
-Orders
-
-Error messages displayed on invalid input or under-stock
-
-##🛠️ Setup Instructions
-Clone the repository:
-git clone https://github.com/your-username/warehouse-orders.git
-Configure PostgreSQL:
-Create a database: database_name
-Update DB connection in your connection utility:
-url = "jdbc:postgresql://localhost:5432/ordersdb"
-user = "your_username"
-password = "your_password"
-Run the database dump script in your PostgreSQL console to get going.
-
-Build and run the application:
-Open in IntelliJ
-Use Maven to build
-Run View.java
-
-##📃 License
-This project is licensed under the MIT License.
-
-##👤 Author
-Your Name
-GitHub: https://github.com/ralu2004
+Initialize the database schema using the provided SQL dump:
+```bash
+psql -U your_username -d ordersdb -f path/to/init.sql
+Build and Run the Application
+```bash
+mvn clean install
 
