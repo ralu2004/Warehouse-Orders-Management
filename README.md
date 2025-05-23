@@ -138,8 +138,11 @@ mvn clean install
 ```
 
 ##  License
+
 This project is licensed under the MIT License.
 
 ## Author
-Raluca Adam
-GitHub: @ralu2004
+
+Raluca Adam  
+GitHub: [@ralu2004](https://github.com/ralu2004)
+
