@@ -114,15 +114,23 @@ git clone https://github.com/your-username/warehouse-orders-management.git
 
 ```sql
 CREATE DATABASE ordersdb;
+```
 ```java
 String url = "jdbc:postgresql://localhost:5432/ordersdb";
 String user = "your_username";
 String password = "your_password";
-
+```
 Initialize the database schema using the provided SQL dump:
 ```bash
 psql -U your_username -d ordersdb -f path/to/init.sql
+```
 Build and Run the Application
 ```bash
 mvn clean install
+```
+##  License
+This project is licensed under the MIT License.
 
+## Author
+Raluca Adam
+GitHub: @ralu2004
